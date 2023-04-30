@@ -1,0 +1,247 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>PER Extension</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-06-23"><meta name="DC.source" content="PER_Extension.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>PER Extension</h1><!--introduction--><p>Extends the domain of the PER values obtained in the IEEE 802.11p system simulation.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#3"><b>Examples</b></a></li><li><a href="#4"><b>SNR extension for simulated SNR results</b></a></li><li><a href="#12"><b>PER theoretical values with extended SNR range</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>PER_Extension(channel)</p><h2 id="2"><b>Description</b></h2><p>The PER_Extension(channel) function extends the domain (in SNR) of simulated PER values, a fixed number of samples to the left and to the right. In addition, it evaluates the theoretical models of the PER on the corresponding SNR range for each case. Finally save the data in .mat files.</p><p>This extension is done to be able to graphically represent the PER of each configuration together with the results of the theorical models.</p><p><b>Input Arguments</b></p><div><ul><li>channel</li></ul></div><p>variable that selects the channel.</p><p><b>Output arguments</b></p><div><ul><li>None</li></ul></div><h2 id="3"><b>Examples</b></h2><p>The PER_Extension(channel) function is called.</p><pre class="codeinput"><span class="keyword">function</span> PER_Extension(channel)
+</pre><h2 id="4"><b>SNR extension for simulated SNR results</b></h2><p>The data obtained from the IEEE 802.11p system simulation is loaded. Variables are defined to save the resulting data, these variables take a long format.</p><pre class="codeinput">load(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_PER_SIM_FINO.mat'</span>))
+format <span class="string">long</span>
+numEle = 400;
+PERTW = zeros(8,SNum+2*numEle);
+SNRVW = zeros(8,2);
+</pre><p>The iterations are made for the 8 possible configurations that the IEEE 802.11p standard allows.</p><pre class="codeinput"><span class="keyword">for</span> p = 1:8
+</pre><p>so and sf are auxiliary variables to obtain the SNR. SNum is the number of elements between so and sf.</p><pre class="codeinput">    so = SNRV(p,1);
+    sf = SNRV(p,2);
+    SNR = linspace(so, sf, SNum);
+    ds = SNR(2) - SNR(1);
+    PER = PERT(p,:);
+</pre><p>numEle equidistant elements are added to the left and right of SNR. SNRE represents the SNR with extended range.</p><pre class="codeinput">    SNRE = so - numEle*ds : ds : sf + numEle*ds;
+</pre><p>Because the PER functions take values between 0 and 1 in a narrow range of SNR, to the left of this range the function takes values of 1 and to the right takes values of 0, making possible a trivial extension of the domain to both sides.</p><pre class="codeinput">    <span class="keyword">if</span>(length(SNRE)&lt;length(SNRVW))
+        last = SNRE(end) + ds;
+        SNRE = [SNRE last];
+    <span class="keyword">end</span>
+    PERW = zeros(1,length(SNRE));
+    PERW(1:numEle) = 1;
+    PERW(numEle + 1:numEle + SNum) = PER;
+    PERW(numEle + SNum + 1:numEle + SNum + numEle) = 0;
+</pre><p>The values are saved in different variables that will be used in the graphs of the results.</p><pre class="codeinput">    PERTW(p,:) = PERW;
+    SNRVW(p,1) = SNRE(1);
+    SNRVW(p,2) = SNRE(end);
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p>The new number of elements in the SNR range is saved and the data is store in a .mat file.</p><pre class="codeinput">SNum = SNum + 2*numEle;
+save(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_PER_ALL_SIM_EXTENDED.mat'</span>))
+</pre><h2 id="12"><b>PER theoretical values with extended SNR range</b></h2><p>The theoretical values of PER are obtained with the ranges of SNR extended previously calculated.</p><p>Extended simulated SNR PER values are loaded.</p><pre class="codeinput">load(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_PER_ALL_SIM_EXTENDED.mat'</span>))
+</pre><p>The PERTH variable is used as an array to save all theoretical PER of all configurations and all respective PER equations.</p><pre class="codeinput">l = numBit;
+PERTH = zeros(8*9,SNum);
+</pre><p>The iterations are made for the 8 possible configurations that the IEEE 802.11p standard allows and are evaluated for the 9 theoretical models of PER. The modulation scheme, the coding rate and the SNR values are obtained from the previously imported data.</p><pre class="codeinput"><span class="keyword">for</span> p=1:8
+    M = PARAMETERS(p,1);
+    r = PARAMETERS(p,2);
+    SNR = linspace(SNRVW(p,1),SNRVW(p,2), SNum);
+    <span class="keyword">for</span> j=1:9
+        PER = evaluate_models(SNR, M, r, l, j);
+        PERTH(((p-1)*9)+j,:)=PER;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p>The values are saved in different variables depending on the configuration.</p><pre class="codeinput">PERTH1 = PERTH(1:9,:);
+PERTH2 = PERTH(10:18,:);
+PERTH3 = PERTH(19:27,:);
+PERTH4 = PERTH(28:36,:);
+PERTH5 = PERTH(37:45,:);
+PERTH6 = PERTH(46:54,:);
+PERTH7 = PERTH(55:63,:);
+PERTH8 = PERTH(64:72,:);
+</pre><p>The data is store in a .mat file.</p><pre class="codeinput">save(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_PER_ALL_THEO_EXTENDED.mat'</span>))
+</pre><p><b>See also</b></p><p><a href="evaluate_models.html">Evaluation of theoretical models</a></p><p><a href="phy_lay.html">Physical layer graph</a></p><p><a href="the_mod.html">Theorical PER models graph</a></p><p><a href="phy_vs_the.html">Theorical PER models vs Physical layer graph</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% PER Extension
+    % Extends the domain of the PER values obtained in the IEEE 802.11p system simulation.
+    %% *Syntax*
+    % PER_Extension(channel)   
+    %% *Description*
+    % The PER_Extension(channel) function extends the domain (in SNR) of simulated
+    % PER values, a fixed number of samples to the left and to the right. 
+    % In addition, it evaluates the theoretical models of the PER on the
+    % corresponding SNR range for each case. Finally save the data in .mat files.
+    %
+    % This extension is done to be able to graphically represent the PER 
+    % of each configuration together with the results of the theorical models.
+    %
+    % *Input Arguments*
+    %
+    % * channel
+    %
+    % variable that selects the channel.
+    %
+    % *Output arguments*
+    %
+    % * None
+    %
+%% *Examples*
+    % The PER_Extension(channel) function is called.
+function PER_Extension(channel) 
+%% *SNR extension for simulated SNR results*
+% The data obtained from the IEEE 802.11p system simulation is loaded.
+% Variables are defined to save the resulting data, these variables
+% take a long format.
+
+load(strcat('rician_',num2str(channel),'_PER_SIM_FINO.mat'))             
+format long
+numEle = 400;
+PERTW = zeros(8,SNum+2*numEle);
+SNRVW = zeros(8,2);
+%%
+% The iterations are made for the 8 possible configurations that the IEEE 
+% 802.11p standard allows.
+for p = 1:8
+%%
+% so and sf are auxiliary variables to obtain the SNR. SNum is the number 
+% of elements between so and sf.
+    so = SNRV(p,1);
+    sf = SNRV(p,2);
+    SNR = linspace(so, sf, SNum); 
+    ds = SNR(2) - SNR(1);
+    PER = PERT(p,:);
+%%
+% numEle equidistant elements are added to the left and right of SNR. SNRE
+% represents the SNR with extended range.
+    SNRE = so - numEle*ds : ds : sf + numEle*ds;
+%%
+% Because the PER functions take values between 0 and 1 in a narrow range 
+% of SNR, to the left of this range the function takes values of 1 and to 
+% the right takes values of 0, making possible a trivial extension of 
+% the domain to both sides.
+
+    if(length(SNRE)<length(SNRVW))
+        last = SNRE(end) + ds;
+        SNRE = [SNRE last];
+    end    
+    PERW = zeros(1,length(SNRE));  
+    PERW(1:numEle) = 1;
+    PERW(numEle + 1:numEle + SNum) = PER;
+    PERW(numEle + SNum + 1:numEle + SNum + numEle) = 0;
+%% 
+% The values are saved in different variables that will be used in 
+% the graphs of the results.
+    PERTW(p,:) = PERW;
+    SNRVW(p,1) = SNRE(1);
+    SNRVW(p,2) = SNRE(end);
+end
+%% 
+% The new number of elements in the SNR range is saved and the data is 
+% store in a .mat file.
+SNum = SNum + 2*numEle;
+save(strcat('rician_',num2str(channel),'_PER_ALL_SIM_EXTENDED.mat'))
+
+%% *PER theoretical values with extended SNR range*
+% The theoretical values of PER are obtained with the ranges of SNR 
+% extended previously calculated.
+%% 
+% Extended simulated SNR PER values are loaded.
+load(strcat('rician_',num2str(channel),'_PER_ALL_SIM_EXTENDED.mat'))
+%%
+% The PERTH variable is used as an array to save all theoretical PER
+% of all configurations and all respective PER equations.
+l = numBit;
+PERTH = zeros(8*9,SNum);
+%%
+% The iterations are made for the 8 possible configurations that the IEEE 
+% 802.11p standard allows and are evaluated for the 9 theoretical models
+% of PER. The modulation scheme, the coding rate and the SNR values are obtained
+% from the previously imported data.
+for p=1:8  
+    M = PARAMETERS(p,1);
+    r = PARAMETERS(p,2);
+    SNR = linspace(SNRVW(p,1),SNRVW(p,2), SNum);
+    for j=1:9        
+        PER = evaluate_models(SNR, M, r, l, j);
+        PERTH(((p-1)*9)+j,:)=PER; 
+    end
+end
+%% 
+% The values are saved in different variables depending on the configuration.
+PERTH1 = PERTH(1:9,:);
+PERTH2 = PERTH(10:18,:);
+PERTH3 = PERTH(19:27,:);
+PERTH4 = PERTH(28:36,:);
+PERTH5 = PERTH(37:45,:);
+PERTH6 = PERTH(46:54,:);
+PERTH7 = PERTH(55:63,:);
+PERTH8 = PERTH(64:72,:);
+%%
+% The data is store in a .mat file.
+save(strcat('rician_',num2str(channel),'_PER_ALL_THEO_EXTENDED.mat'))
+%%
+% *See also*
+%
+% <evaluate_models.html Evaluation of theoretical models> 
+%
+% <phy_lay.html Physical layer graph>
+%
+% <the_mod.html Theorical PER models graph>
+%
+% <phy_vs_the.html Theorical PER models vs Physical layer graph> 
+##### SOURCE END #####
+--></body></html>

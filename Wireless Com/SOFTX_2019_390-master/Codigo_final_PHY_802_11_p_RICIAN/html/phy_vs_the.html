@@ -1,0 +1,337 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Theorical PER models vs Physical layer graph</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-06-23"><meta name="DC.source" content="phy_vs_the.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Theorical PER models vs Physical layer graph</h1><!--introduction--><p>It obtains the figure PER vs SNR for therorical PER models and for the physical layer.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#3"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>phy_vs_the(channel)</p><h2 id="2"><b>Description</b></h2><p>The phy_vs_the(channel) function plots the data of all the theorical models for each configuration and compares them with the obtained in the simulation of the IEEE 802.11 physical layer in a graph. It is shown in both normal and logarithmic scales. It shows 8 different graphs, one for each modulation scheme, type of coding and data rate</p><p><b>Input Arguments</b></p><div><ul><li>channel</li></ul></div><p>variable that selects the channel.</p><p><b>Output arguments</b></p><div><ul><li>None</li></ul></div><h2 id="3"><b>Examples</b></h2><p>The the_mod function is called.</p><pre class="codeinput"><span class="keyword">function</span> phy_vs_the(channel)
+</pre><p>The functions needed to graph the results are called. The first evaluates the theoretical models of the PER on the range of SNR that best suits a given configuration.While the second collects all the data in a single file to facilitate the management of the values obtained.</p><pre class="codeinput">PER_Extension(channel);
+Data_Consolidation(channel);
+</pre><p>Theoretical data is loaded.</p><pre class="codeinput">load(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_Consolidated_Data.mat'</span>))
+</pre><p>Each variable contains a different configuration of modulation scheme and coding rate respectively.</p><pre class="codeinput">zconf1 = <span class="string">'BPSK - r=1/2 '</span>;
+zconf2 = <span class="string">'BPSK - r=3/4 '</span>;
+zconf3 = <span class="string">'QPSK - r=1/2 '</span>;
+zconf4 = <span class="string">'QPSK - r=3/4 '</span>;
+zconf5 = <span class="string">'16QAM - r=1/2'</span>;
+zconf6 = <span class="string">'16QAM - r=3/4'</span>;
+zconf7 = <span class="string">'64QAM - r=2/3'</span>;
+zconf8 = <span class="string">'64QAM - r=3/4'</span>;
+bs = <span class="string">' '</span>;
+zconf = [zconf1 ; zconf2 ; zconf3 ; zconf4 ; zconf5 ; zconf6 ; zconf7 ; zconf8];
+</pre><p>Each variable contains a theoretical model to calculate the PER.</p><pre class="codeinput">zmod1 = <span class="string">'Model 1'</span>;
+zmod2 = <span class="string">'Model 2'</span>;
+zmod3 = <span class="string">'Model 3'</span>;
+zmod4 = <span class="string">'Model 4'</span>;
+zmod5 = <span class="string">'Model 5'</span>;
+zmod6 = <span class="string">'Model 6'</span>;
+zmod7 = <span class="string">'Model 7'</span>;
+zmod8 = <span class="string">'Model 8'</span>;
+zmod9 = <span class="string">'Model 9'</span>;
+zmod = [zmod1 ; zmod2 ; zmod3 ; zmod4 ; zmod5 ; zmod6 ; zmod7 ; zmod8; zmod9];
+</pre><pre class="codeinput">znconf1 = <span class="string">'BPSK--R12'</span>;
+znconf2 = <span class="string">'BPSK--R34'</span>;
+znconf3 = <span class="string">'QPSK--R12'</span>;
+znconf4 = <span class="string">'QPSK--R34'</span>;
+znconf5 = <span class="string">'16QAM-R12'</span>;
+znconf6 = <span class="string">'16QAM-R34'</span>;
+znconf7 = <span class="string">'64QAM-R23'</span>;
+znconf8 = <span class="string">'64QAM-R34'</span>;
+znconf = [znconf1 ; znconf2 ; znconf3 ; znconf4 ; znconf5 ; znconf6 ; znconf7 ; znconf8];
+</pre><p>The limits for the normal scale graph are set.</p><pre class="codeinput">lim = [ -4.3    25    0 1;
+        0.55    35     0 1;
+        -1.4    25      0 1;
+        3.3     35    0 1;
+        2.15    35      0 1;
+        2.8     40    0 1;
+        1.5     40      0 1;
+        1.6     45      0 1];
+</pre><p>The limits for the graph for semilogarithmic scale are set.</p><pre class="codeinput">limlog = [ -4.3    25    1e-2 1;
+        0.55    35     1e-2 1;
+        -1.4    25      1e-2 1;
+        3.3     35    1e-2 1;
+        2.15    35      1e-2 1;
+        2.8     40    1e-2 1;
+        1.5     40      1e-2 1;
+        1.6     45      1e-2 1];
+</pre><p>The result of the theorical models are plotted. Each figure consists of two graphs, the first shows the graph in normal scale and the second shows the graph in semi-logarithmic scale.</p><pre class="codeinput"><span class="keyword">for</span> i=1:8
+</pre><pre class="codeinput">SNR = linspace(SNRV_FIN_EXT(i,1), SNRV_FIN_EXT(i,2), SNUM_FIN_EXT);
+    f1 = figure;
+    subplot(1,2,1)
+    plot(SNR,PER_SIM_FIN_EXT(i,:),<span class="string">'k'</span>,<span class="string">'LineWidth'</span>,1);
+    hold <span class="string">on</span>
+    subplot(1,2,2)
+    semilogy(SNR,PER_SIM_FIN_EXT(i,:),<span class="string">'k'</span>,<span class="string">'LineWidth'</span>,1);
+    hold <span class="string">on</span>
+    <span class="keyword">for</span> j=1:9
+
+        <span class="keyword">if</span>(j&gt;=8)
+             subplot(1,2,1)
+            plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'-.'</span>, <span class="string">'MarkerSize'</span>, 3);hold <span class="string">on</span>
+            subplot(1,2,2)
+            semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'-.'</span>, <span class="string">'MarkerSize'</span>, 3);hold <span class="string">on</span>
+        <span class="keyword">else</span>
+            <span class="keyword">if</span>(j==4)
+                 subplot(1,2,1)
+                plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'-.r'</span>, <span class="string">'MarkerSize'</span>, 3);hold <span class="string">on</span>
+                subplot(1,2,2)
+                semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'-.r'</span>, <span class="string">'MarkerSize'</span>, 3);hold <span class="string">on</span>
+            <span class="keyword">else</span>
+                 subplot(1,2,1)
+                plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'--'</span>);hold <span class="string">on</span>
+                subplot(1,2,2)
+                semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),<span class="string">'--'</span>);hold <span class="string">on</span>
+            <span class="keyword">end</span>
+
+        <span class="keyword">end</span>
+
+        hold <span class="string">on</span>
+    <span class="keyword">end</span>
+</pre><p>Aggregation of labels, titles and limits of the normal scale graph.</p><pre class="codeinput">    subplot(1,2,1)
+    legend(<span class="string">' PHY Simulation'</span>, zmod1, zmod2, zmod3, zmod4, zmod5, zmod6, zmod7, zmod8, zmod9, <span class="string">'Location'</span>,<span class="string">'northeastoutside'</span>);
+    title([<span class="string">'PHY sim. vs theoretical models   '</span>, <span class="string">' '</span>, zconf(i,:) ]);
+    xlabel(<span class="string">'SNR [dB]'</span>)
+    ylabel(<span class="string">'PER'</span>)
+    grid <span class="string">on</span>
+    grid <span class="string">minor</span>
+    axis([lim(i,1) lim(i,2) lim(i,3) lim(i,4)])
+</pre><p>Aggregation of labels, titles and limits of the semi-logarithmic scale graph.</p><pre class="codeinput">    subplot(1,2,2)
+    legend(<span class="string">' PHY Simulation'</span>, zmod1, zmod2, zmod3, zmod4, zmod5, zmod6, zmod7, zmod8, zmod9, <span class="string">'Location'</span>,<span class="string">'northeastoutside'</span>);
+    title([<span class="string">'PHY sim. vs theoretical models [log]  '</span>, <span class="string">' '</span>, zconf(i,:) ]);
+    xlabel(<span class="string">'SNR [dB]'</span>)
+    ylabel(<span class="string">'PER'</span>)
+    grid <span class="string">on</span>
+    grid <span class="string">minor</span>
+    axis([limlog(i,1) limlog(i,2) limlog(i,3) limlog(i,4)])
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p>An example of the result for each model and simulation is shown below.</p><p><img vspace="5" hspace="5" src="pvt_fig.PNG" alt=""> </p><p><b>See also</b></p><p><a href="evaluate_models.html">Evaluation of theoretical models</a></p><p><a href="simulation_802_11_p.html">IEEE 802.11 Physical layer</a></p><p><a href="PER_Extension.html">PER_Extension</a></p><p><a href="Data_Consolidation.html">Data_Consolidation</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Theorical PER models vs Physical layer graph
+    % It obtains the figure PER vs SNR for therorical PER models and for the physical layer.
+    %% *Syntax*
+    % phy_vs_the(channel)
+    %% *Description*
+    % The phy_vs_the(channel) function plots the data of all the theorical
+    % models for each configuration and compares them with the obtained in
+    % the simulation of the IEEE 802.11 physical layer in a graph. 
+    % It is shown in both normal and logarithmic scales. 
+    % It shows 8 different graphs, one for each modulation scheme,
+    % type of coding and data rate
+    %
+    % *Input Arguments*
+    %
+    % * channel
+    %
+    % variable that selects the channel.
+    %
+    % *Output arguments*
+    %
+    % * None
+    %
+%% *Examples*
+    % The the_mod function is called.
+function phy_vs_the(channel)
+%%
+% The functions needed to graph the results are called. The first evaluates
+% the theoretical models of the PER on the range of SNR that best suits
+% a given configuration.While the second collects all the data in a single 
+% file to facilitate the management of the values obtained.
+PER_Extension(channel);
+Data_Consolidation(channel);
+%%
+% Theoretical data is loaded.
+load(strcat('rician_',num2str(channel),'_Consolidated_Data.mat'))
+%% 
+% Each variable contains a different configuration of modulation
+% scheme and coding rate respectively.
+zconf1 = 'BPSK - r=1/2 ';
+zconf2 = 'BPSK - r=3/4 ';
+zconf3 = 'QPSK - r=1/2 ';
+zconf4 = 'QPSK - r=3/4 ';
+zconf5 = '16QAM - r=1/2';
+zconf6 = '16QAM - r=3/4';
+zconf7 = '64QAM - r=2/3';
+zconf8 = '64QAM - r=3/4';
+bs = ' ';
+zconf = [zconf1 ; zconf2 ; zconf3 ; zconf4 ; zconf5 ; zconf6 ; zconf7 ; zconf8];
+%%
+% Each variable contains a theoretical model to calculate the PER.
+zmod1 = 'Model 1';
+zmod2 = 'Model 2';
+zmod3 = 'Model 3';
+zmod4 = 'Model 4';
+zmod5 = 'Model 5';
+zmod6 = 'Model 6';
+zmod7 = 'Model 7';
+zmod8 = 'Model 8';
+zmod9 = 'Model 9';
+zmod = [zmod1 ; zmod2 ; zmod3 ; zmod4 ; zmod5 ; zmod6 ; zmod7 ; zmod8; zmod9];
+%% 
+znconf1 = 'BPSKREPLACE_WITH_DASH_DASHR12';
+znconf2 = 'BPSKREPLACE_WITH_DASH_DASHR34';
+znconf3 = 'QPSKREPLACE_WITH_DASH_DASHR12';
+znconf4 = 'QPSKREPLACE_WITH_DASH_DASHR34';
+znconf5 = '16QAM-R12';
+znconf6 = '16QAM-R34';
+znconf7 = '64QAM-R23';
+znconf8 = '64QAM-R34';
+znconf = [znconf1 ; znconf2 ; znconf3 ; znconf4 ; znconf5 ; znconf6 ; znconf7 ; znconf8];
+%%
+% The limits for the normal scale graph are set.
+lim = [ -4.3    25    0 1;
+        0.55    35     0 1;
+        -1.4    25      0 1;
+        3.3     35    0 1;
+        2.15    35      0 1;
+        2.8     40    0 1;
+        1.5     40      0 1;
+        1.6     45      0 1];
+%% 
+% The limits for the graph for semilogarithmic scale are set.  
+limlog = [ -4.3    25    1e-2 1;
+        0.55    35     1e-2 1;
+        -1.4    25      1e-2 1;
+        3.3     35    1e-2 1;
+        2.15    35      1e-2 1;
+        2.8     40    1e-2 1;
+        1.5     40      1e-2 1;
+        1.6     45      1e-2 1];
+
+%% 
+% The result of the theorical models are plotted.  
+% Each figure consists of two graphs, the first shows the graph in normal 
+% scale and the second shows the graph in semi-logarithmic scale.
+for i=1:8
+SNR = linspace(SNRV_FIN_EXT(i,1), SNRV_FIN_EXT(i,2), SNUM_FIN_EXT);
+    f1 = figure;
+    subplot(1,2,1)
+    plot(SNR,PER_SIM_FIN_EXT(i,:),'k','LineWidth',1);
+    hold on
+    subplot(1,2,2)
+    semilogy(SNR,PER_SIM_FIN_EXT(i,:),'k','LineWidth',1);
+    hold on
+    for j=1:9
+        
+        if(j>=8)
+             subplot(1,2,1)
+            plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'-.', 'MarkerSize', 3);hold on
+            subplot(1,2,2)
+            semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'-.', 'MarkerSize', 3);hold on
+        else
+            if(j==4)
+                 subplot(1,2,1)
+                plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'-.r', 'MarkerSize', 3);hold on
+                subplot(1,2,2)
+                semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'-.r', 'MarkerSize', 3);hold on
+            else
+                 subplot(1,2,1)
+                plot(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'REPLACE_WITH_DASH_DASH');hold on
+                subplot(1,2,2)
+                semilogy(SNR,PER_THEO_FIN_EXT((i-1)*9+j,:),'REPLACE_WITH_DASH_DASH');hold on
+            end
+            
+        end
+        
+        hold on
+    end
+%%
+    % Aggregation of labels, titles and limits of the normal scale graph.
+    subplot(1,2,1)
+    legend(' PHY Simulation', zmod1, zmod2, zmod3, zmod4, zmod5, zmod6, zmod7, zmod8, zmod9, 'Location','northeastoutside');
+    title(['PHY sim. vs theoretical models   ', ' ', zconf(i,:) ]);
+    xlabel('SNR [dB]')
+    ylabel('PER')
+    grid on
+    grid minor
+    axis([lim(i,1) lim(i,2) lim(i,3) lim(i,4)])
+%% 
+    % Aggregation of labels, titles and limits of the semi-logarithmic scale graph.
+    subplot(1,2,2)
+    legend(' PHY Simulation', zmod1, zmod2, zmod3, zmod4, zmod5, zmod6, zmod7, zmod8, zmod9, 'Location','northeastoutside');
+    title(['PHY sim. vs theoretical models [log]  ', ' ', zconf(i,:) ]);
+    xlabel('SNR [dB]')  
+    ylabel('PER')
+    grid on
+    grid minor
+    axis([limlog(i,1) limlog(i,2) limlog(i,3) limlog(i,4)])
+end
+
+%%
+% An example of the result for each model and simulation is shown below.
+%%
+% 
+% <<pvt_fig.PNG>>
+% 
+%%
+% *See also*
+%
+% <evaluate_models.html Evaluation of theoretical models>
+%
+% <simulation_802_11_p.html IEEE 802.11 Physical layer> 
+%
+% <PER_Extension.html  PER_Extension> 
+%
+% <Data_Consolidation.html  Data_Consolidation> 
+##### SOURCE END #####
+--></body></html>

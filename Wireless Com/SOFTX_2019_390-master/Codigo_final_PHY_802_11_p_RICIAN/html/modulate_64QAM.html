@@ -1,0 +1,224 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>64-QAM modulation</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="modulate_64QAM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>64-QAM modulation</h1><!--introduction--><p>Performs the modulation based on the 64-QAM scheme.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Sintaxis</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#4"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Sintaxis</b></h2><p>modulated = modulate_64QAM(data)</p><h2 id="2"><b>Description</b></h2><p>The function modulated = modulate_64QAM(data) returns a set of modulated bits based on the 64-QAM scheme. It assigns every six input bits, a complex symbol according to the 64-QAM constellation diagram mentioned in the 802.11-2012 standard.</p><p><img vspace="5" hspace="5" src="Di_cons_64QAM.PNG" alt=""> </p><p><b>Input Arguments</b></p><div><ul><li>data</li></ul></div><p>Input vector, specified as an unmodulated bit vector.</p><p><b>Output Arguments</b></p><div><ul><li>modulated</li></ul></div><p>Frequency modulated 64QAM symbols.</p><h2 id="4"><b>Examples</b></h2><p>The function modular64QAM(datos) is called.</p><pre class="codeinput"><span class="keyword">function</span> modulated = modulate_64QAM(data)
+</pre><p>M is defined as the number of phases used for this modulation and m as the number of bits assigned to each symbol.</p><pre class="codeinput">    M = 64;
+    m = 6;
+    modulated = zeros(1,length(data)/m);
+</pre><p>Each bit combination is assigned according to what is specified in the standard constellation diagram. A loop is made to cover all the bits of the data vector. The data interation is done according to the standard, that is, 1 symbol every 6 bits.</p><pre class="codeinput">     <span class="keyword">for</span> i = 1:m:length(data)
+</pre><p>The variable re is used for the real part of the number and im is used for the imaginary part of the number.</p><pre class="codeinput">        re = 0;
+        im = 0*i;
+</pre><p>The first bit (i) determines the horizontal hemisphere, the second bit (i + 1) and third bit (i + 2) correspond to the real part for the assignment according to the constellation diagram.</p><pre class="codeinput">        <span class="keyword">if</span> data(i) == 1
+            re = +1;
+        <span class="keyword">else</span>
+            re = -1;
+        <span class="keyword">end</span>
+
+        <span class="keyword">if</span> data(i+1) == 1              <span class="comment">%1</span>
+            <span class="keyword">if</span> data(i+2) == 1          <span class="comment">%11 *</span>
+                re = re*3;
+            <span class="keyword">else</span>                        <span class="comment">%10 *</span>
+                re = re*1;
+            <span class="keyword">end</span>
+        <span class="keyword">else</span>                            <span class="comment">%0</span>
+            <span class="keyword">if</span> data(i+2) == 1          <span class="comment">%01 *</span>
+                re = re*5;
+            <span class="keyword">else</span>                        <span class="comment">%00 *</span>
+                re = re*7;
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+</pre><p>The fourth bit (i + 3) determines the vertical hemisphere, the fifth (i + 4) and the sixth bit (i + 5) correspond to the imaginary part for the assignment according to the constellation diagram.</p><pre class="codeinput">        <span class="keyword">if</span> data(i+3) == 1
+            im = +1i;
+        <span class="keyword">else</span>
+            im = -1i;
+        <span class="keyword">end</span>
+
+
+        <span class="keyword">if</span> data(i+4) == 1              <span class="comment">%1</span>
+            <span class="keyword">if</span> data(i+5) == 1          <span class="comment">%11 *</span>
+                im = im*3;
+            <span class="keyword">else</span>                        <span class="comment">%10 *</span>
+                im = im*1;
+            <span class="keyword">end</span>
+        <span class="keyword">else</span>                            <span class="comment">%0</span>
+            <span class="keyword">if</span> data(i+5) == 1          <span class="comment">%01 *</span>
+                im = im*5;
+            <span class="keyword">else</span>                        <span class="comment">%00 *</span>
+                im = im*7;
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+
+        modulated( (i+m-1)/m ) = re + im;
+</pre><pre class="codeinput">    <span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="modulation_string.html">String modulation</a></p><p><a href="demodulate_64QAM.html">64QAM demodulation</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 64-QAM modulation
+    % Performs the modulation based on the 64-QAM scheme.
+    %% *Sintaxis*
+    % modulated = modulate_64QAM(data)
+    %% *Description*
+    % The function modulated = modulate_64QAM(data) returns a set of modulated 
+    % bits based on the 64-QAM scheme. It assigns every six input bits, 
+    % a complex symbol according to the 64-QAM constellation diagram
+    % mentioned in the 802.11-2012 standard.
+    %%
+    % 
+    % <<Di_cons_64QAM.PNG>>
+    % 
+    % *Input Arguments*
+    %
+    % * data
+    %
+    % Input vector, specified as an unmodulated bit vector.
+    %
+    % *Output Arguments*
+    %
+    % * modulated
+    %
+    % Frequency modulated 64QAM symbols. 
+    %
+    %% *Examples*
+    % The function modular64QAM(datos) is called.
+function modulated = modulate_64QAM(data)
+%%
+    % M is defined as the number of phases used for this modulation 
+    % and m as the number of bits assigned to each symbol.
+    M = 64;
+    m = 6;
+    modulated = zeros(1,length(data)/m);
+%%    
+    % Each bit combination is assigned according to what is specified 
+    % in the standard constellation diagram. A loop is made to cover all
+    % the bits of the data vector. The data interation is done according 
+    % to the standard, that is, 1 symbol every 6 bits.
+     for i = 1:m:length(data)
+%% 
+    % The variable re is used for the real part of the number and im
+    % is used for the imaginary part of the number.
+        re = 0;
+        im = 0*i;
+%%
+    % The first bit (i) determines the horizontal hemisphere, 
+    % the second bit (i + 1) and third bit (i + 2) correspond to the
+    % real part for the assignment according to the constellation diagram.
+        if data(i) == 1               
+            re = +1;
+        else
+            re = -1;
+        end
+        
+        if data(i+1) == 1              %1
+            if data(i+2) == 1          %11 *
+                re = re*3;
+            else                        %10 *
+                re = re*1;
+            end
+        else                            %0
+            if data(i+2) == 1          %01 *
+                re = re*5;
+            else                        %00 *
+                re = re*7;
+            end
+        end
+%%
+    % The fourth bit (i + 3) determines the vertical hemisphere,
+    % the fifth (i + 4) and the sixth bit (i + 5) correspond to the
+    % imaginary part for the assignment according to the constellation diagram.
+        if data(i+3) == 1                
+            im = +1i;
+        else
+            im = -1i;           
+        end
+
+        
+        if data(i+4) == 1              %1
+            if data(i+5) == 1          %11 *
+                im = im*3;
+            else                        %10 *
+                im = im*1;
+            end
+        else                            %0
+            if data(i+5) == 1          %01 *
+                im = im*5;
+            else                        %00 *
+                im = im*7;
+            end
+        end
+        
+        modulated( (i+m-1)/m ) = re + im;
+    end
+end
+%%  
+    % *See also*
+    %
+    % <modulation_string.html String modulation>
+    %
+    % <demodulate_64QAM.html 64QAM demodulation>
+##### SOURCE END #####
+--></body></html>

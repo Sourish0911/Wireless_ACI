@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Physical layer graph</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-06-23"><meta name="DC.source" content="phy_lay.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Physical layer graph</h1><!--introduction--><p>It obtains the figure of the PER vs SNR for the physical layer.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#3"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>phy_lay(channel)</p><h2 id="2"><b>Description</b></h2><p>The phy_lay(channel) function obtains the data from a dataset that contains the values of the simulations and  the theoretical models. The data is loaded and compared using a graph. It is shown in both normal and logarithmic scales.</p><p>The way in which the physical layer IEEE 802.11 is constructed is specified in the function: <b>simulation_802_11_p</b>, which can be found at the end of this document.</p><p><b>Input Arguments</b></p><div><ul><li>channel</li></ul></div><p>variable that selects the channel.</p><p><b>Output arguments</b></p><div><ul><li>None</li></ul></div><h2 id="3"><b>Examples</b></h2><p>The phy_lay(channel) function is called.</p><pre class="codeinput"><span class="keyword">function</span> phy_lay(channel)
+</pre><p>The functions needed to graph the results are called. The first evaluates the theoretical models of the PER on the range of SNR that best suits a given configuration.While the second collects all the data in a single file to facilitate the management of the values obtained.</p><pre class="codeinput">PER_Extension(channel);
+Data_Consolidation(channel);
+</pre><p>Load the theoretical data.</p><pre class="codeinput">load(strcat(<span class="string">'rician_'</span>,num2str(channel),<span class="string">'_Consolidated_Data.mat'</span>))
+</pre><p>Each variable contains a different configuration of modulation scheme and coding rate, respectively.</p><pre class="codeinput">zconf1 = <span class="string">'BPSK - r=1/2 '</span>;
+zconf2 = <span class="string">'BPSK - r=3/4 '</span>;
+zconf3 = <span class="string">'QPSK - r=1/2 '</span>;
+zconf4 = <span class="string">'QPSK - r=3/4 '</span>;
+zconf5 = <span class="string">'16QAM - r=1/2'</span>;
+zconf6 = <span class="string">'16QAM - r=3/4'</span>;
+zconf7 = <span class="string">'64QAM - r=2/3'</span>;
+zconf8 = <span class="string">'64QAM - r=3/4'</span>;
+bs = <span class="string">' '</span>;
+zconf = [zconf1 ; zconf2 ; zconf3 ; zconf4 ; zconf5 ; zconf6 ; zconf7 ; zconf8];
+</pre><p>Physical layer values for all configurations. Each figure consists of two graphs, the first shows the graph in normal scale and the second shows the graph in semi-logarithmic scale.</p><pre class="codeinput">figure
+<span class="keyword">for</span> i=1:8
+    SNR = linspace(SNRV_FIN_EXT(i,1), SNRV_FIN_EXT(i,2), SNUM_FIN_EXT);
+    subplot(1,2,1)
+    plot(SNR,PER_SIM_FIN_EXT(i,:),<span class="string">'LineWidth'</span>,1);
+    hold <span class="string">on</span>
+    subplot(1,2,2)
+    semilogy(SNR,PER_SIM_FIN_EXT(i,:),<span class="string">'LineWidth'</span>,1);
+    hold <span class="string">on</span>
+<span class="keyword">end</span>
+</pre><p>Aggregation of labels, titles and limits of the normal scale graph.</p><pre class="codeinput">subplot(1,2,1)
+legend(zconf1, zconf2, zconf3, zconf4, zconf5, zconf6, zconf7, zconf8, <span class="string">'Location'</span>,<span class="string">'northeastoutside'</span>);
+<span class="keyword">if</span> channel==1
+    title(<span class="string">'Simulated PHY with Rural Line-of-Sight channel'</span>)
+<span class="keyword">elseif</span> channel==2
+    title(<span class="string">'Simulated PHY with Urban Line-of-Sight channel'</span>)
+<span class="keyword">elseif</span> channel==3
+    title(<span class="string">'Simulated PHY with Highway Line-of-Sight channel'</span>)
+<span class="keyword">elseif</span> channel==4
+    title(<span class="string">'Simulated PHY with Highway Non-line-of-Sight channel'</span>)
+<span class="keyword">end</span>
+
+xlabel(<span class="string">'SNR [dB]'</span>)
+ylabel(<span class="string">'PER'</span>)
+grid <span class="string">on</span>
+grid <span class="string">minor</span>
+axis([-3 45 0 1])
+</pre><p>Aggregation of labels, titles and limits of the semi-logarithmic scale graph.</p><pre class="codeinput">subplot(1,2,2)
+legend(zconf1, zconf2, zconf3, zconf4, zconf5, zconf6, zconf7, zconf8, <span class="string">'Location'</span>,<span class="string">'northeastoutside'</span>);
+<span class="keyword">if</span> channel==1
+    title(<span class="string">'Simulated PHY with Rural Line-of-Sight channel [log]'</span>)
+<span class="keyword">elseif</span> channel==2
+    title(<span class="string">'Simulated PHY with Urban Line-of-Sight channel [log]'</span>)
+<span class="keyword">elseif</span> channel==3
+    title(<span class="string">'Simulated PHY with Highway Line-of-Sight channel [log]'</span>)
+<span class="keyword">elseif</span> channel==4
+    title(<span class="string">'Simulated PHY with Highway Non-line-of-Sight channel [log]'</span>)
+<span class="keyword">end</span>
+xlabel(<span class="string">'SNR [dB]'</span>)
+ylabel(<span class="string">'PER'</span>)
+grid <span class="string">on</span>
+grid <span class="string">minor</span>
+axis([-3 45 1e-2 1])
+</pre><p>The result for each configuration is shown below.</p><p><img vspace="5" hspace="5" src="phy_fig.PNG" alt=""> </p><p><b>See also</b></p><p><a href="simulation_802_11_p.html">IEEE 802.11 Physical layer</a></p><p><a href="PER_Extension.html">PER_Extension</a></p><p><a href="Data_Consolidation.html">Data_Consolidation</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Physical layer graph
+    % It obtains the figure of the PER vs SNR for the physical layer.
+    %% *Syntax*
+    % phy_lay(channel)
+    %% *Description*
+    % The phy_lay(channel) function obtains the data from a dataset that contains 
+    % the values of the simulations and  the theoretical models.
+    % The data is loaded and compared using a graph. 
+    % It is shown in both normal and logarithmic scales.
+    %
+    % The way in which the physical layer IEEE 802.11 is constructed is
+    % specified in the function: *simulation_802_11_p*, which can be found
+    % at the end of this document.
+    % 
+    % *Input Arguments*
+    %
+    % * channel
+    %
+    % variable that selects the channel.
+    %
+    % *Output arguments*
+    %
+    % * None
+    %
+%% *Examples*
+    % The phy_lay(channel) function is called.
+function phy_lay(channel)
+%%
+% The functions needed to graph the results are called. The first evaluates
+% the theoretical models of the PER on the range of SNR that best suits
+% a given configuration.While the second collects all the data in a single 
+% file to facilitate the management of the values obtained.
+PER_Extension(channel);
+Data_Consolidation(channel);
+%%
+% Load the theoretical data.
+load(strcat('rician_',num2str(channel),'_Consolidated_Data.mat'))
+
+%% 
+% Each variable contains a different configuration of modulation
+% scheme and coding rate, respectively.
+zconf1 = 'BPSK - r=1/2 ';
+zconf2 = 'BPSK - r=3/4 ';
+zconf3 = 'QPSK - r=1/2 ';
+zconf4 = 'QPSK - r=3/4 ';
+zconf5 = '16QAM - r=1/2';
+zconf6 = '16QAM - r=3/4';
+zconf7 = '64QAM - r=2/3';
+zconf8 = '64QAM - r=3/4';
+bs = ' ';
+zconf = [zconf1 ; zconf2 ; zconf3 ; zconf4 ; zconf5 ; zconf6 ; zconf7 ; zconf8];
+%%
+    % Physical layer values for all configurations.
+    % Each figure consists of two graphs, the first shows the graph in normal 
+    % scale and the second shows the graph in semi-logarithmic scale.
+figure
+for i=1:8
+    SNR = linspace(SNRV_FIN_EXT(i,1), SNRV_FIN_EXT(i,2), SNUM_FIN_EXT);
+    subplot(1,2,1)
+    plot(SNR,PER_SIM_FIN_EXT(i,:),'LineWidth',1);
+    hold on
+    subplot(1,2,2)
+    semilogy(SNR,PER_SIM_FIN_EXT(i,:),'LineWidth',1);
+    hold on
+end
+%%
+    % Aggregation of labels, titles and limits of the normal scale graph.
+subplot(1,2,1)
+legend(zconf1, zconf2, zconf3, zconf4, zconf5, zconf6, zconf7, zconf8, 'Location','northeastoutside');
+if channel==1
+    title('Simulated PHY with Rural Line-of-Sight channel')
+elseif channel==2
+    title('Simulated PHY with Urban Line-of-Sight channel')
+elseif channel==3
+    title('Simulated PHY with Highway Line-of-Sight channel')
+elseif channel==4
+    title('Simulated PHY with Highway Non-line-of-Sight channel')
+end
+
+xlabel('SNR [dB]')
+ylabel('PER')
+grid on
+grid minor
+axis([-3 45 0 1])
+%% 
+    % Aggregation of labels, titles and limits of the semi-logarithmic scale graph.
+subplot(1,2,2)
+legend(zconf1, zconf2, zconf3, zconf4, zconf5, zconf6, zconf7, zconf8, 'Location','northeastoutside');
+if channel==1
+    title('Simulated PHY with Rural Line-of-Sight channel [log]')
+elseif channel==2
+    title('Simulated PHY with Urban Line-of-Sight channel [log]')
+elseif channel==3
+    title('Simulated PHY with Highway Line-of-Sight channel [log]')
+elseif channel==4
+    title('Simulated PHY with Highway Non-line-of-Sight channel [log]')
+end
+xlabel('SNR [dB]')
+ylabel('PER')
+grid on
+grid minor
+axis([-3 45 1e-2 1])
+%%
+% The result for each configuration is shown below.
+%%
+% 
+% <<phy_fig.PNG>>
+% 
+%%
+% *See also*
+%
+% <simulation_802_11_p.html IEEE 802.11 Physical layer> 
+%
+% <PER_Extension.html  PER_Extension> 
+%
+% <Data_Consolidation.html  Data_Consolidation> 
+##### SOURCE END #####
+--></body></html>

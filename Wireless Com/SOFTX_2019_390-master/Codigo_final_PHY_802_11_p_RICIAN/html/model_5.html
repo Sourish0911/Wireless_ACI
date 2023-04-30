@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Predictive theoretical model of PER #5</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="model_5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Predictive theoretical model of PER #5</h1><!--introduction--><p>Model of upper bound for OFDM system, with model to obtain the BER#2.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#5"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>PER = model_5(SNR, M, r, l)</p><h2 id="2"><b>Description</b></h2><p>The model_5(SNR, M, r, l) function describes a model for calculating an upper bound of the PER in IEEE 802.11p systems. More precise considerations are made with respect to the coding rates, free distance and the number of paths at given distances of the trellis diagram of the convolutional encoder with the corresponding puncture patterns. An SNR value is also taken into account by OFDM symbol considering the contribution of the cyclic prefix. The BER value for this model is calculated independently in a function called <b>modeloBER2()</b> and the PER is ultimately parameterized with respect to the SNR and the length of the packet (L).</p><p>The PER value is given by the equation:</p><p><img vspace="5" hspace="5" src="MPER_04.PNG" alt=""> </p><p>The value <b>d</b> is the minimum distance of the convolutional code that represents the minimum distance of a code word that moves away from the path of all 0 in the Trellis diagram. The value <b>a</b> represents the number of roads in the Trellis diagram of length d. These values are constants obtained from the following table.</p><p><img vspace="5" hspace="5" src="tab_03.PNG" alt=""> </p><p><b>Input Arguments</b></p><div><ul><li>SNR</li></ul></div><p>SNR value.</p><div><ul><li>M</li></ul></div><p>Modulation scheme.</p><div><ul><li>r</li></ul></div><p>Coding rate.</p><div><ul><li>l</li></ul></div><p>Packet length in bits.</p><p><b>Output arguments</b></p><div><ul><li>PER</li></ul></div><p>Calculated PER value.</p><h2 id="5"><b>Examples</b></h2><p>The model_5(SNR, M, r, l) function is called.</p><pre class="codeinput"><span class="keyword">function</span> PER = model_5(SNR, M, r, l)
+</pre><p>The BER value is obtained with modeloBER2() and depends on the SNR, the modulation scheme and the coding rate.</p><pre class="codeinput">    SNR = 10^(SNR/10);
+    be = model_BER2(SNR, M, r);
+</pre><pre class="codeoutput error">Not enough input arguments.
+
+Error in model_5 (line 63)
+    SNR = 10^(SNR/10);
+</pre><p>Depending on the coding rate, the parameters are chosen.</p><pre class="codeinput">    <span class="keyword">switch</span> r
+        <span class="keyword">case</span> 1/2
+            adv = [11, 0, 38, 0, 193, 0, 1331, 0, 7275, 0];
+            dfree = 10;
+        <span class="keyword">case</span> 3/4
+            adv = [8, 31, 160, 892, 4512, 23307, 121077, 625059, 3234886, 16753077];
+            dfree = 5;
+        <span class="keyword">case</span> 2/3
+            adv = [1, 16, 48, 158, 642, 2435, 9174, 34705, 131585, 499608];
+            dfree = 6;
+    <span class="keyword">end</span>
+</pre><p>Summation calculation for all dfree values.</p><pre class="codeinput">    sum = 0;
+    i = 1;
+    <span class="keyword">for</span> d=dfree:(dfree+9)
+        Pd = 0;
+        <span class="keyword">if</span>(mod(d,2) == 0)   <span class="comment">% It is even</span>
+            <span class="keyword">for</span> k = ((d/2) + 1):d
+                b = nchoosek(d,k);
+                sn = b*(be^k)*((1 - be)^(d-k));
+                Pd = Pd + sn;
+            <span class="keyword">end</span>
+            sn2 = (1/2)*nchoosek(d,d/2)*(be^(d/2))*((1-be)^(d/2));
+            Pd = Pd + sn2;
+        <span class="keyword">else</span>                <span class="comment">% It is odd</span>
+            <span class="keyword">for</span> k = ((d+1)/2):d
+                b = nchoosek(d,k);
+                sn = b*(be^k)*((1 - be)^(d-k));
+                Pd = Pd + sn;
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        sum = sum + adv(i)*Pd;
+        i = i + 1;
+    <span class="keyword">end</span>
+</pre><p>The PER is calculated with the corresponding formula.</p><pre class="codeinput">    PER = 1 - (1 - sum)^l;
+    <span class="keyword">if</span>(PER&lt;0)
+        PER = 1;
+    <span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="model_BER2.html">model_BER2</a></p><p><a href="evaluate_models.html">Evaluation of theoretical models</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Predictive theoretical model of PER #5
+    % Model of upper bound for OFDM system, with model to obtain the BER#2.
+    %% *Syntax*
+    % PER = model_5(SNR, M, r, l)
+    %% *Description*
+    % The model_5(SNR, M, r, l) function describes a model for calculating 
+    % an upper bound of the PER in IEEE 802.11p systems.
+    % More precise considerations are made with respect to the coding
+    % rates, free distance and the number of paths at given distances of
+    % the trellis diagram of the convolutional encoder with the 
+    % corresponding puncture patterns.
+    % An SNR value is also taken into account by OFDM symbol considering 
+    % the contribution of the cyclic prefix.
+    % The BER value for this model is calculated independently in a 
+    % function called *modeloBER2()* and the PER is ultimately parameterized 
+    % with respect to the SNR and the length of the packet (L). 
+    %
+    % The PER value is given by the equation:
+    %%
+    % 
+    % <<MPER_04.PNG>>
+    % 
+    % The value *d* is the minimum distance of the convolutional code
+    % that represents the minimum distance of a code word that moves
+    % away from the path of all 0 in the Trellis diagram.
+    % The value *a* represents the number of roads in the Trellis diagram of length d.
+    % These values are constants obtained from the following table.
+    %%
+    % 
+    % <<tab_03.PNG>>
+    % 
+    % *Input Arguments*
+    %
+    %
+    % * SNR
+    %
+    % SNR value.
+    %   
+    % * M
+    %
+    % Modulation scheme.
+    %
+    % * r
+    %
+    % Coding rate.
+    %
+    % * l
+    %
+    % Packet length in bits.
+    % 
+    % *Output arguments*
+    %
+    % * PER
+    %
+    % Calculated PER value.
+    %
+    %% *Examples*
+    % The model_5(SNR, M, r, l) function is called.
+function PER = model_5(SNR, M, r, l)
+%%
+    % The BER value is obtained with modeloBER2() and depends on the SNR, 
+    % the modulation scheme and the coding rate.
+    SNR = 10^(SNR/10);
+    be = model_BER2(SNR, M, r);
+    %%
+    % Depending on the coding rate, the parameters are chosen.
+    switch r
+        case 1/2
+            adv = [11, 0, 38, 0, 193, 0, 1331, 0, 7275, 0];
+            dfree = 10;
+        case 3/4
+            adv = [8, 31, 160, 892, 4512, 23307, 121077, 625059, 3234886, 16753077];
+            dfree = 5;
+        case 2/3
+            adv = [1, 16, 48, 158, 642, 2435, 9174, 34705, 131585, 499608];
+            dfree = 6;
+    end
+%% 
+    % Summation calculation for all dfree values.
+    sum = 0;
+    i = 1;
+    for d=dfree:(dfree+9)
+        Pd = 0;
+        if(mod(d,2) == 0)   % It is even
+            for k = ((d/2) + 1):d
+                b = nchoosek(d,k);
+                sn = b*(be^k)*((1 - be)^(d-k));
+                Pd = Pd + sn;
+            end
+            sn2 = (1/2)*nchoosek(d,d/2)*(be^(d/2))*((1-be)^(d/2));
+            Pd = Pd + sn2;
+        else                % It is odd
+            for k = ((d+1)/2):d
+                b = nchoosek(d,k);
+                sn = b*(be^k)*((1 - be)^(d-k));
+                Pd = Pd + sn;
+            end
+        end
+        sum = sum + adv(i)*Pd;
+        i = i + 1;
+    end
+ %%
+    % The PER is calculated with the corresponding formula.     
+    PER = 1 - (1 - sum)^l;
+    if(PER<0)
+        PER = 1;
+    end
+end
+%%
+    % *See also*
+    %
+    % <model_BER2.html model_BER2> 
+    % 
+    % <evaluate_models.html Evaluation of theoretical models> 
+##### SOURCE END #####
+--></body></html>

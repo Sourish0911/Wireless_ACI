@@ -1,0 +1,233 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Predictive theoretical model of PER # 1</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="model_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Predictive theoretical model of PER # 1</h1><!--introduction--><p>Model for vehicular networks by interpolation.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#7"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>PER = model_1(SNR, M, r, l)</p><h2 id="2"><b>Description</b></h2><p>The model_1(SNR, M, r, l) function is a mathematical analytical model for the calculation of PER, the model is obtained by interpolating the PER data taken from a realistic simulation. This model is described based on a SNR value and the length of the packets. It is given by the equation:</p><p><img vspace="5" hspace="5" src="MPER_01.PNG" alt=""> </p><p>Where <img src="model_1_eq17096441642737911057.png" alt="$\gamma$" style="width:8px;height:10px;"> is the SNR in dB, <b>L</b> is the length of the packet in bits, <img src="model_1_eq16398751029649089378.png" alt="$a_{R}(L)$" style="width:37px;height:15px;"> and <img src="model_1_eq18136828578062138275.png" alt="$b_{R}(L)$" style="width:34px;height:15px;"> are parameters obtained as a function of the modulation scheme and coding rate. The values of <img src="model_1_eq16398751029649089378.png" alt="$a_{R}(L)$" style="width:37px;height:15px;"> and <img src="model_1_eq18136828578062138275.png" alt="$b_{R}(L)$" style="width:34px;height:15px;"> are given by the equations below.</p><p><img vspace="5" hspace="5" src="ar_01.PNG" alt=""> </p><p><img vspace="5" hspace="5" src="br_01.PNG" alt=""> </p><p>The values of c and d are constants that depend on the modulation and coding used. The standard can reach different transmission speeds depending on the modulation scheme and coding rate. The configurations allowed by the IEEE 802.11 standard are specified below.</p><p><img vspace="5" hspace="5" src="Conf_per.PNG" alt=""> </p><p><b>Input Arguments</b></p><div><ul><li>SNR</li></ul></div><p>SNR value.</p><div><ul><li>M</li></ul></div><p>Modulation scheme.</p><div><ul><li>r</li></ul></div><p>Coding rate.</p><div><ul><li>l</li></ul></div><p>Packet length in bits.</p><p><b>Output arguments</b></p><div><ul><li>PER</li></ul></div><p>Calculated PER value.</p><h2 id="7"><b>Examples</b></h2><p>The model_1(SNR, M, r, l) function is called.</p><pre class="codeinput"><span class="keyword">function</span> PER = model_1(SNR, M, r, l)
+</pre><p>The table shows of constants c and d which are on the modulation scheme, coding rate and transmission speed. The first 4 columns correspond to the values of c, while the last 4 columns correspond to values of d. The values of the rows correspond to the different transmission speeds, being 3, 4.5, 6, 9, 12, 18, 24 and 27 Mbps.</p><pre class="codeinput">    c = [-13.64	8.939	-1.3	0.6895	0.0001286	-0.004565	0.0001003	-0.004927;
+        -15.29	9.228	-1.103	0.5428	0.0001216	-0.004469	9.348E-05	-0.004772;
+        -19.85	10.31	-1.313	0.5674	0.0001027	-0.004712	8.23E-05	-0.00505;
+        -22.12	10.93	-1.174	0.4898	9.08E-05	-0.003987	7.308E-05	-0.004162;
+        -25.97	12.83	-1.258	0.5459	0.0001124	-0.006063	8.505E-05	-0.006508;
+        -29.14	12.89	-1.164	0.4501	0.0001017	-0.004607	8.58E-05	-0.004811;
+        -39.27	18.17	-1.354	0.5715	8.056E-05	-0.0043134	6.918E-05	-0.004409;
+        -37.24	16.17	-1.219	0.4811	8.734E-05	-0.005424	7.552E-05	-0.005779;
+        ];
+</pre><p>The values of the constants are chosen depending on the modulation scheme. Also the r = 3/4 is always the second option of the same M.</p><pre class="codeinput">    i=0;
+    <span class="keyword">switch</span> M
+        <span class="keyword">case</span> 2
+            i = 1;
+        <span class="keyword">case</span> 4
+            i = 3;
+        <span class="keyword">case</span> 16
+            i = 5;
+        <span class="keyword">case</span> 64
+            i = 7;
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> r == 3/4
+        i = i+1;
+    <span class="keyword">end</span>
+</pre><p>Assignment of c and d constants.</p><pre class="codeinput">    c1 = c(i,1);
+    d1 = c(i,5);
+    c2 = c(i,2);
+    d2 = c(i,6);
+    c3 = c(i,3);
+    d3 = c(i,7);
+    c4 = c(i,4);
+    d4 = c(i,8);
+</pre><p>The parameters <img src="model_1_eq16398751029649089378.png" alt="$a_{R}(L)$" style="width:37px;height:15px;"> and <img src="model_1_eq18136828578062138275.png" alt="$b_{R}(L)$" style="width:34px;height:15px;"> are calculated.</p><pre class="codeinput">    ar = ( c1 * exp(d1*l) + c2 * exp(d2*l) );
+    br = ( c3 * exp(d3*l) + c4 * exp(d4*l) );
+</pre><p>The PER is calculated with the corresponding formula.</p><pre class="codeinput">    PER = (1 - tanh( ar - br*(SNR+10) ) ) / 2;                    <span class="comment">% Originally it is 10 dB.</span>
+    <span class="keyword">if</span>(PER&lt;0)
+        PER = 1;
+    <span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="evaluate_models.html">Evaluation of theoretical models</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Predictive theoretical model of PER # 1
+    % Model for vehicular networks by interpolation.
+    %% *Syntax*
+    % PER = model_1(SNR, M, r, l)
+    %% *Description*
+    % The model_1(SNR, M, r, l) function is a mathematical analytical model 
+    % for the calculation of PER, the model is obtained by interpolating
+    % the PER data taken from a realistic simulation.
+    % This model is described based on a SNR value and the 
+    % length of the packets. It is given by the equation:
+    %%
+    % 
+    % <<MPER_01.PNG>>
+    % 
+    % Where $\gamma$ is the SNR in dB, *L* is the length of the packet in bits, 
+    % $a_{R}(L)$ and $b_{R}(L)$ are parameters obtained as a function of the 
+    % modulation scheme and coding rate. The values of $a_{R}(L)$ and $b_{R}(L)$ are
+    % given by the equations below.
+    %%
+    % 
+    % <<ar_01.PNG>>
+    % 
+    %%
+    % 
+    % <<br_01.PNG>>
+    % 
+    % The values of c and d are constants that depend
+    % on the modulation and coding used. The standard can reach different
+    % transmission speeds depending on the modulation scheme and coding rate.
+    % The configurations allowed by the IEEE 802.11 standard are specified below.
+    %%
+    % 
+    % <<Conf_per.PNG>>
+    % 
+    % *Input Arguments*
+    %
+    %
+    % * SNR
+    %
+    % SNR value.
+    %   
+    % * M
+    %
+    % Modulation scheme.
+    %
+    % * r
+    %
+    % Coding rate.
+    %
+    % * l
+    %
+    % Packet length in bits.
+    % 
+    % *Output arguments*
+    %
+    % * PER
+    %
+    % Calculated PER value.
+    %
+    %% *Examples*
+    % The model_1(SNR, M, r, l) function is called.
+function PER = model_1(SNR, M, r, l)
+%%
+% The table shows of constants c and d which are on the modulation scheme, coding 
+% rate and transmission speed. The first 4 columns correspond to the 
+% values of c, while the last 4 columns correspond to values of d.
+% The values of the rows correspond to the different transmission speeds,
+% being 3, 4.5, 6, 9, 12, 18, 24 and 27 Mbps.
+    c = [-13.64	8.939	-1.3	0.6895	0.0001286	-0.004565	0.0001003	-0.004927;
+        -15.29	9.228	-1.103	0.5428	0.0001216	-0.004469	9.348E-05	-0.004772;
+        -19.85	10.31	-1.313	0.5674	0.0001027	-0.004712	8.23E-05	-0.00505;
+        -22.12	10.93	-1.174	0.4898	9.08E-05	-0.003987	7.308E-05	-0.004162;
+        -25.97	12.83	-1.258	0.5459	0.0001124	-0.006063	8.505E-05	-0.006508;
+        -29.14	12.89	-1.164	0.4501	0.0001017	-0.004607	8.58E-05	-0.004811;
+        -39.27	18.17	-1.354	0.5715	8.056E-05	-0.0043134	6.918E-05	-0.004409;
+        -37.24	16.17	-1.219	0.4811	8.734E-05	-0.005424	7.552E-05	-0.005779;
+        ];
+%%
+    % The values of the constants are chosen depending on the modulation
+    % scheme. Also the r = 3/4 is always the second option of the same M.
+    
+    i=0;
+    switch M            
+        case 2
+            i = 1;
+        case 4
+            i = 3;
+        case 16
+            i = 5;
+        case 64
+            i = 7;
+    end
+    
+    if r == 3/4              
+        i = i+1;
+    end
+%%
+    % Assignment of c and d constants.
+    c1 = c(i,1);
+    d1 = c(i,5);
+    c2 = c(i,2);
+    d2 = c(i,6);
+    c3 = c(i,3);
+    d3 = c(i,7);
+    c4 = c(i,4);
+    d4 = c(i,8);
+%%
+    % The parameters $a_{R}(L)$ and $b_{R}(L)$ are calculated.
+    ar = ( c1 * exp(d1*l) + c2 * exp(d2*l) );
+    br = ( c3 * exp(d3*l) + c4 * exp(d4*l) );
+%%
+    % The PER is calculated with the corresponding formula.
+    PER = (1 - tanh( ar - br*(SNR+10) ) ) / 2;                    % Originally it is 10 dB.
+    if(PER<0)
+        PER = 1;
+    end
+end
+%%
+% *See also*
+% 
+% <evaluate_models.html Evaluation of theoretical models> 
+##### SOURCE END #####
+--></body></html>

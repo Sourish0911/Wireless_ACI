@@ -1,0 +1,147 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ODFM package transmision</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="txOFDM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ODFM package transmision</h1><!--introduction--><p>Creation of the OFDM baseband transmission string.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#4"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>[package, PSDU] = txOFDM(numBit, M, r)</p><h2 id="2"><b>Description</b></h2><p>The function txOFDM(numBit, M, r) implements the transmission of a package. It calls functions for the creation of the preamble, header and payload of the package and concatenates the packet elements in time and returns two output arguments. The structure of the package is shown below.</p><p><img vspace="5" hspace="5" src="paqu_PLCP.PNG" alt=""> </p><p><b>Input arguments</b></p><div><ul><li>numBit</li></ul></div><p>Number of bits per package.</p><div><ul><li>M</li></ul></div><p>Modulation scheme to be used.</p><div><ul><li>r</li></ul></div><p>Coding rate.</p><p><b>Output arguments</b></p><div><ul><li>package</li></ul></div><p>Physical layer frame in time.</p><div><ul><li>PSDU</li></ul></div><p>Payload in bits.</p><h2 id="4"><b>Examples</b></h2><p>The function txOFDM(numBit, M, r) is called.</p><pre class="codeinput"><span class="keyword">function</span> [package, PSDU] = txOFDM(numBit, M, r)
+</pre><p>Check that the number of bits per package is correct.</p><pre class="codeinput">    <span class="keyword">if</span>(numBit &lt; 8 || numBit &gt; 4095*8)
+    	errordlg(<span class="string">'Number of bits per package invalid (8 - 32760)'</span>,<span class="string">'Error'</span>)
+    <span class="keyword">end</span>
+</pre><p>Each part of the package is created independently.</p><pre class="codeinput">    SYNC = Create_SYNC();             <span class="comment">% Preamble in time</span>
+    SIGNAL = Create_SIGNAL();         <span class="comment">% Header in time</span>
+    PSDU = round(rand(1,numBit));   <span class="comment">% PSDU in bits</span>
+    DATA = Create_DATA(PSDU, M, r);   <span class="comment">% PSDU in time</span>
+    package = [SYNC SIGNAL DATA];   <span class="comment">% Package in time</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="Create_SYNC.html">Create_SYNC()</a></p><p><a href="Create_SIGNAL.html">Create_SIGNAL()</a></p><p><a href="Create_DATA.html">Create_DATA()</a></p><p><a href="simulation_802_11_p.html">IEEE 802.11 comunication system</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ODFM package transmision
+    % Creation of the OFDM baseband transmission string.
+    %% *Syntax*
+    % [package, PSDU] = txOFDM(numBit, M, r) 
+    %
+    %% *Description*
+    % The function txOFDM(numBit, M, r) implements the transmission of a package.
+    % It calls functions for the creation of the preamble, header and payload of
+    % the package and concatenates the packet elements in time and
+    % returns two output arguments. The structure of the package is shown
+    % below.
+    %
+    %%
+    % 
+    % <<paqu_PLCP.PNG>>
+    %
+    % *Input arguments*
+    %
+    % * numBit
+    %
+    % Number of bits per package.
+    %
+    % * M
+    %
+    % Modulation scheme to be used.
+    %
+    % * r
+    %
+    % Coding rate.
+    %
+    % *Output arguments*
+    %
+    % * package
+    %
+    % Physical layer frame in time.
+    %
+    % * PSDU
+    %
+    % Payload in bits.    
+    %% *Examples*
+    % The function txOFDM(numBit, M, r) is called.
+function [package, PSDU] = txOFDM(numBit, M, r) 
+%%
+    % Check that the number of bits per package is correct.
+    if(numBit < 8 || numBit > 4095*8)        
+    	errordlg('Number of bits per package invalid (8 - 32760)','Error')
+    end
+%% 
+    % Each part of the package is created independently.
+    SYNC = Create_SYNC();             % Preamble in time
+    SIGNAL = Create_SIGNAL();         % Header in time
+    PSDU = round(rand(1,numBit));   % PSDU in bits
+    DATA = Create_DATA(PSDU, M, r);   % PSDU in time
+    package = [SYNC SIGNAL DATA];   % Package in time
+end
+%% 
+    % *See also*
+    %
+    % <Create_SYNC.html Create_SYNC()>
+    %
+    % <Create_SIGNAL.html Create_SIGNAL()>
+    %
+    % <Create_DATA.html Create_DATA()>
+    %
+    % <simulation_802_11_p.html IEEE 802.11 comunication system>
+##### SOURCE END #####
+--></body></html>

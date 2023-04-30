@@ -1,0 +1,178 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Data field processing</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="process_DATA.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Data field processing</h1><!--introduction--><p>Process the samples corresponding to the field DATA of the package.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#3"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>PSDU = process_DATA(DATA, M, r, numBit)</p><h2 id="2"><b>Description</b></h2><p>The process_DATA(DATA, M, r, numBit) function returns a payload of bits performing the reverse process done in transmission, including demodulation, deinterleaving, decoding and scrambling according to the IEEE 802.11-2012 standard.</p><p><b>Input arguments</b></p><div><ul><li>DATA</li></ul></div><p>OFDM symbols of the DATA field in time.</p><div><ul><li>M</li></ul></div><p>Modulation scheme to be used.</p><div><ul><li>r</li></ul></div><p>Coding rate.</p><div><ul><li>numBit</li></ul></div><p>Number of bits per package.</p><p><b>Output arguments</b></p><div><ul><li>PSDU</li></ul></div><p>Payload in bits.</p><h2 id="3"><b>Examples</b></h2><p>The function process_DATA(DATA, M, r, numBit) is called.</p><pre class="codeinput"><span class="keyword">function</span> PSDU = process_DATA(DATA, M, r, numBit)
+</pre><p>The number of coded bits per subcarrier, the number of coded bits per symbol and the number of data bits per symbol is obtained according to the IEEE 802.11 standard.</p><pre class="codeinput">    m = log2(M);
+    NBPSC = m;
+    NCBPS = NBPSC * 48;
+    NDBPS = NCBPS * r;
+</pre><p>To obtain the data bits of the DATA field, the following steps are followed:</p><p><b>OFDM Demodulation</b></p><p>The modulated data of the OFDM symbols is extracted.</p><pre class="codeinput">    MDATA = demodulation_OFDM(DATA);
+</pre><p><b>String Demodulation</b></p><p>The demodulation process is carried out with the M modulation scheme.</p><pre class="codeinput">    IDATA = demodulate_string(MDATA, M);
+</pre><p><b>Deinterleaving</b></p><p>The deinterleaving process is based on the number of coded bits per symbol.</p><pre class="codeinput">    CDATA = deinterleaver_string(IDATA, NCBPS);
+</pre><p><b>Decodification</b></p><p>The decodification is done with a coding rate r and a M modulation scheme.</p><pre class="codeinput">    SDATA = decode_string(CDATA, r, M);
+</pre><p><b>Scrambling</b></p><p>The scrambling is done with the PDU and an Initial state  = [1 0 1 1 1 0 1] according to the IEEE 802.11 standard.</p><pre class="codeinput">    ODATA = scrambleString(SDATA, [1 0 1 1 1 0 1]);
+</pre><p>The fields SERVICE tail and padding are removed.</p><pre class="codeinput">    PSDU = ODATA(16 + 1: 16 + numBit);
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="demodulation_OFDM.html">OFDM demodulation</a></p><p><a href="demodulate_string.html">String demodulation</a></p><p><a href="deinterleaver_string.html">String deinterleaving</a></p><p><a href="decode_string.html">String decodification</a></p><p><a href="scrambleString.html">scrambleString</a></p><p><a href="extract_DATA.html">Data field extraction</a></p><p><a href="rxOFDM.html">ODFM package reception</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%  Data field processing
+    % Process the samples corresponding to the field DATA of the package.
+    %% *Syntax*
+    % PSDU = process_DATA(DATA, M, r, numBit)
+    %% *Description*
+    % The process_DATA(DATA, M, r, numBit) function returns a payload of 
+    % bits performing the reverse process done in transmission, including 
+    % demodulation, deinterleaving, decoding and scrambling according 
+    % to the IEEE 802.11-2012 standard.
+    %
+    % *Input arguments*
+    %
+    % * DATA
+    %
+    % OFDM symbols of the DATA field in time.
+    %
+    % * M
+    %
+    % Modulation scheme to be used.
+    %
+    % * r
+    %
+    % Coding rate.
+    %
+    % * numBit
+    %
+    % Number of bits per package.
+    %
+    % *Output arguments*
+    %
+    % * PSDU
+    %
+    % Payload in bits.    
+    %% *Examples*
+    % The function process_DATA(DATA, M, r, numBit) is called.
+function PSDU = process_DATA(DATA, M, r, numBit)
+%%
+    % The number of coded bits per subcarrier, the number of coded 
+    % bits per symbol and the number of data bits per symbol is obtained 
+    % according to the IEEE 802.11 standard.       
+    m = log2(M); 
+    NBPSC = m;                              
+    NCBPS = NBPSC * 48;                   	
+    NDBPS = NCBPS * r;     
+%%
+    % To obtain the data bits of the DATA field, the following steps are followed:
+%% 
+    % *OFDM Demodulation*
+    %
+    % The modulated data of the OFDM symbols is extracted.
+    MDATA = demodulation_OFDM(DATA);
+%% 
+    % *String Demodulation*
+    %
+    % The demodulation process is carried out with the M modulation scheme.  
+    IDATA = demodulate_string(MDATA, M);     
+%% 
+    % *Deinterleaving*
+    %
+    % The deinterleaving process is based on the number of coded bits per
+    % symbol.    
+    CDATA = deinterleaver_string(IDATA, NCBPS); 
+%% 
+    % *Decodification*
+    %
+    % The decodification is done with a coding rate r and a M modulation scheme.
+    SDATA = decode_string(CDATA, r, M);     
+%% 
+    % *Scrambling*
+    %
+    % The scrambling is done with the PDU and an Initial state  = [1 0 1 1 1 0 1] 
+    % according to the IEEE 802.11 standard.   
+    ODATA = scrambleString(SDATA, [1 0 1 1 1 0 1]);
+%%  
+    % The fields SERVICE tail and padding are removed.
+    PSDU = ODATA(16 + 1: 16 + numBit);             
+    
+end
+%% 
+    % *See also*
+    %
+    % <demodulation_OFDM.html OFDM demodulation>
+    %
+    % <demodulate_string.html String demodulation>
+    %
+    % <deinterleaver_string.html String deinterleaving>
+    %
+    % <decode_string.html String decodification>
+    %
+    % <scrambleString.html scrambleString> 
+    %
+    % <extract_DATA.html Data field extraction> 
+    %
+    % <rxOFDM.html ODFM package reception> 
+##### SOURCE END #####
+--></body></html>

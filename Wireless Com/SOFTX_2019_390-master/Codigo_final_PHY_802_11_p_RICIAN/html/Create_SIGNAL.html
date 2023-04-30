@@ -1,0 +1,170 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>PLCP Header</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-23"><meta name="DC.source" content="Create_SIGNAL.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>PLCP Header</h1><!--introduction--><p>Creation of the header of a PLCP package.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#4"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>SIGNAL = Create_SIGNAL()</p><h2 id="2"><b>Description</b></h2><p>The function Create_SIGNAL() returns the header of a PLCP packet according to the IEEE 802.11-2012 standard, which is formed by an OFDM symbol. This function does not accept input parameters, the output is obtained based on other functions and mathematical expressions defined in the standard.</p><p><img vspace="5" hspace="5" src="Signal_field.PNG" alt=""> </p><p><b>Input arguments</b></p><div><ul><li>None</li></ul></div><p><b>Output arguments</b></p><div><ul><li>SIGNAL</li></ul></div><p>Header field in PPDU PLCP time.</p><h2 id="4"><b>Examples</b></h2><p>The function Create_SIGNAL() is called.</p><pre class="codeinput"><span class="keyword">function</span> SIGNAL = Create_SIGNAL()
+</pre><p>For the creation of the SIGNAL field, a coding rate of R = 1/2 and a BPSK modulation scheme (M = 2) are used. The SIGNAL field has 24 bits, of which the last 6 correspond to a tail of 0s.</p><pre class="codeinput">    M = 2;
+    r = 1/2;
+    m=log2(M);
+
+    bits_header = round(rand(1,18));       <span class="comment">% The header has 18 bits</span>
+    tail = zeros(1,6);                      <span class="comment">% Tail of 6 0s</span>
+    bits_header = [bits_header tail];     <span class="comment">% The field SIGNAL has 24 bits</span>
+</pre><p>To obtain the number of bits per subcarrier, the number of bits coded per symbol and the number of data bits per symbol is made according to the IEEE 802.11 standard.</p><pre class="codeinput">    NBPSC = m;                        <span class="comment">% Number of bits per subcarrier</span>
+    NCBPS = NBPSC * 48;               <span class="comment">% Number of coded bits per symbol</span>
+    NDBPS = NCBPS * r;                <span class="comment">% Number of data bits per symbol</span>
+</pre><p>To map the header of an OFDM symbol, the following steps are followed:</p><p><b>Codification</b></p><p>The coding is done with a coding rate r = 1/2.</p><pre class="codeinput">   Coded_header = Encode_String(bits_header, r);
+</pre><p><b>Interleaving</b></p><p>The interleaving process is done with BPSK.</p><pre class="codeinput">    Interleaver_header = Interleaver_string(Coded_header, NCBPS);
+</pre><p><b>Modulation</b></p><p>The modulation process is carried out with the BPSK modulation scheme.</p><pre class="codeinput">    Modulated_header = modulation_string(Interleaver_header, 2);
+</pre><p><b>OFDM symbol construction</b></p><p>The construction of the OFDM symbol is done with 48 data subcarriers.</p><pre class="codeinput">    SIGNAL = Assemble_OFDM_symbol(Modulated_header, 1);
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="Encode_String.html">Encode_String</a></p><p><a href="Interleaver_string.html">Interleaver_string</a></p><p><a href="modulation_string.html">modulation_string</a></p><p><a href="Assemble_OFDM_symbol.html">Assemble_OFDM_symbol</a></p><p><a href="txOFDM.html">OFDM package transmission</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% PLCP Header
+    % Creation of the header of a PLCP package.
+    %% *Syntax*
+    % SIGNAL = Create_SIGNAL()
+    %% *Description*
+    % The function Create_SIGNAL() returns the header of a PLCP packet 
+    % according to the IEEE 802.11-2012 standard, which is formed by an OFDM symbol.
+    % This function does not accept input parameters, the output is 
+    % obtained based on other functions and mathematical expressions defined in the standard.
+    %
+    %%
+    % 
+    % <<Signal_field.PNG>>
+    % 
+    % *Input arguments*
+    %
+    % * None
+    %
+    % *Output arguments*
+    %
+    % * SIGNAL
+    %
+    % Header field in PPDU PLCP time.
+
+    %% *Examples*
+    % The function Create_SIGNAL() is called.
+function SIGNAL = Create_SIGNAL()
+%%
+    % For the creation of the SIGNAL field, a coding rate of R = 1/2
+    % and a BPSK modulation scheme (M = 2) are used. The SIGNAL field
+    % has 24 bits, of which the last 6 correspond to a tail of 0s.
+    
+    M = 2;                            
+    r = 1/2;                         
+    m=log2(M);   
+    
+    bits_header = round(rand(1,18));       % The header has 18 bits
+    tail = zeros(1,6);                      % Tail of 6 0s
+    bits_header = [bits_header tail];     % The field SIGNAL has 24 bits
+%% 
+    % To obtain the number of bits per subcarrier, the number of bits 
+    % coded per symbol and the number of data bits per symbol is made 
+    % according to the IEEE 802.11 standard.
+    NBPSC = m;                        % Number of bits per subcarrier    
+    NCBPS = NBPSC * 48;               % Number of coded bits per symbol   
+    NDBPS = NCBPS * r;                % Number of data bits per symbol     
+%%    
+    % To map the header of an OFDM symbol, the following steps are followed:
+%%
+    % *Codification*
+    %
+    % The coding is done with a coding rate r = 1/2.
+    %%
+   Coded_header = Encode_String(bits_header, r); 
+%%
+    % *Interleaving*
+    %
+    % The interleaving process is done with BPSK.
+    Interleaver_header = Interleaver_string(Coded_header, NCBPS);
+%%
+    % *Modulation*
+    %
+    % The modulation process is carried out with the BPSK modulation scheme.
+    Modulated_header = modulation_string(Interleaver_header, 2); 
+%%
+    % *OFDM symbol construction*
+    %
+    % The construction of the OFDM symbol is done with 48 data subcarriers.
+    SIGNAL = Assemble_OFDM_symbol(Modulated_header, 1); 
+end
+%%
+    % *See also*
+    %
+    % <Encode_String.html Encode_String> 
+    %
+    % <Interleaver_string.html Interleaver_string>
+    %
+    % <modulation_string.html modulation_string>
+    %
+    % <Assemble_OFDM_symbol.html Assemble_OFDM_symbol>
+    %
+    % <txOFDM.html OFDM package transmission>
+##### SOURCE END #####
+--></body></html>

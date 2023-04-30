@@ -1,0 +1,193 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Theoretical model of BER #2</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-08-26"><meta name="DC.source" content="model_BER2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Theoretical model of BER #2</h1><!--introduction--><p>Obtains the BER value in function of the SNR and modulation scheme.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1"><b>Syntax</b></a></li><li><a href="#2"><b>Description</b></a></li><li><a href="#6"><b>Examples</b></a></li></ul></div><h2 id="1"><b>Syntax</b></h2><p>BER = model_ER2(SNR, M, r)</p><h2 id="2"><b>Description</b></h2><p>The model_BER2(SNR, M, r) function performs the calculation of the BER according to a value of SNR. The second theorical model of BER considers a value of Eb/No by OFDM symbol. To transform the Eb/No to SNR considering the modulation scheme and the portion of the OFDM symbol corresponding to the cyclic prefix the equation below is used:</p><p><img vspace="5" hspace="5" src="MBER_02_ys.PNG" alt=""> </p><p>With <img src="model_BER2_eq17096441642737911057.png" alt="$\gamma$" style="width:8px;height:10px;">(s) being the SNR value, <img src="model_BER2_eq09419937966026416414.png" alt="$v_{t}$" style="width:11px;height:9px;"> the transmission speed in Mbps and m the number of bits per symbol of modulation (BPSK, QPSK, 16QAM, 64QAM). For the different modulation schemes, the BER formulas that are used in the model_BER2() are the following.</p><p><img vspace="5" hspace="5" src="MBER_02.PNG" alt=""> </p><p>Q(') is the function Q defined by equation:</p><p><img vspace="5" hspace="5" src="Q.PNG" alt=""> </p><p><b>Input Arguments</b></p><div><ul><li>SNR</li></ul></div><p>SNR value.</p><div><ul><li>M</li></ul></div><p>Modulation scheme.</p><div><ul><li>r</li></ul></div><p>Coding rate.</p><p><b>Output arguments</b></p><div><ul><li>BER</li></ul></div><p>Calculated BER value.</p><h2 id="6"><b>Examples</b></h2><p>The model_BER2(SNR, M, r)  function is called.</p><pre class="codeinput"><span class="keyword">function</span> BER = model_BER2(SNR, M, r)
+</pre><p>The values are defined based on the modulation scheme. The table of constants <img src="model_BER2_eq00395383145113642455.png" alt="$c_{m}$" style="width:15px;height:9px;"> and <img src="model_BER2_eq14306422264681352545.png" alt="$k_{m}$" style="width:16px;height:13px;"> also is based on the modulation scheme, where the first column represents the value of <img src="model_BER2_eq00395383145113642455.png" alt="$c_{m}$" style="width:15px;height:9px;"> and the second one the value of <img src="model_BER2_eq14306422264681352545.png" alt="$k_{m}$" style="width:16px;height:13px;">. Also each row correspond to BPSK, QPSK, 16-QAM and 64-QAM, respectively.</p><pre class="codeinput">    m = log2(M);
+    v = 6*m*r;
+
+    c = [   1       2;
+            1       1;
+            3/4     1/5;
+            7/12    1/21;
+        ];
+</pre><p>The value of <img src="model_BER2_eq17096441642737911057.png" alt="$\gamma$" style="width:8px;height:10px;">(s) is calculated with the formula below.</p><pre class="codeinput">       gamma = (8*m/v) * SNR;
+</pre><p>The values of the constants are chosen depending on the modulation scheme.</p><pre class="codeinput">    <span class="keyword">switch</span> M
+        <span class="keyword">case</span> 2
+            f=1;
+        <span class="keyword">case</span> 4
+            f=2;
+        <span class="keyword">case</span> 16
+            f=3;
+        <span class="keyword">case</span> 64
+            f=4;
+    <span class="keyword">end</span>
+</pre><p>Assignment of <img src="model_BER2_eq00395383145113642455.png" alt="$c_{m}$" style="width:15px;height:9px;"> and <img src="model_BER2_eq14306422264681352545.png" alt="$k_{m}$" style="width:16px;height:13px;"> constants.</p><pre class="codeinput">    cm = c(f,1);
+    km = c(f,2);
+</pre><p>The BER is calculated with the corresponding formula.</p><pre class="codeinput">    BER = cm*qfunc(sqrt(km*gamma));
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p><b>See also</b></p><p><a href="model_5.html">Predictive theoretical model of PER #5</a></p><p><a href="model_8.html">Predictive theoretical model of PER #8</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Theoretical model of BER #2
+    % Obtains the BER value in function of the SNR and modulation scheme.
+    %% *Syntax*
+    % BER = model_ER2(SNR, M, r)
+    %% *Description*
+    % The model_BER2(SNR, M, r) function performs the calculation of the
+    % BER according to a value of SNR.
+    % The second theorical model of BER considers a value of Eb/No by OFDM 
+    % symbol. To transform the Eb/No to SNR considering the modulation
+    % scheme and the portion of the OFDM symbol corresponding to the cyclic
+    % prefix the equation below is used:
+    %%
+    % 
+    % <<MBER_02_ys.PNG>>
+    % 
+    % With $\gamma$(s) being the SNR value, $v_{t}$ the transmission speed in Mbps and m 
+    % the number of bits per symbol of modulation (BPSK, QPSK, 16QAM, 64QAM). 
+    % For the different modulation schemes, the BER formulas that are used 
+    % in the model_BER2() are the following.
+    %%
+    % 
+    % <<MBER_02.PNG>>
+    %  
+    % Q(') is the function Q defined by equation:
+    %%
+    % 
+    % <<Q.PNG>>
+    % 
+    % *Input Arguments*
+    %
+    %
+    % * SNR
+    %
+    % SNR value.
+    %   
+    % * M
+    %
+    % Modulation scheme.
+    %
+    % * r
+    %
+    % Coding rate.
+    % 
+    % *Output arguments*
+    %
+    % * BER
+    %
+    % Calculated BER value.
+    %
+    %% *Examples*
+    % The model_BER2(SNR, M, r)  function is called.
+function BER = model_BER2(SNR, M, r)
+%%
+    % The values are defined based on the modulation scheme.
+    % The table of constants $c_{m}$ and $k_{m}$ also is based on the modulation scheme,
+    % where the first column represents the value of $c_{m}$ and the
+    % second one the value of $k_{m}$. Also each row correspond to 
+    % BPSK, QPSK, 16-QAM and 64-QAM, respectively.
+    m = log2(M);
+    v = 6*m*r;
+     
+    c = [   1       2;
+            1       1;
+            3/4     1/5;
+            7/12    1/21;
+        ];
+ %%
+    % The value of $\gamma$(s) is calculated with the formula below.
+   
+       gamma = (8*m/v) * SNR;
+  %% 
+    % The values of the constants are chosen depending on the modulation
+    % scheme. 
+    switch M
+        case 2
+            f=1;
+        case 4
+            f=2;
+        case 16
+            f=3;
+        case 64
+            f=4;
+    end
+ %%
+    % Assignment of $c_{m}$ and $k_{m}$ constants.    
+    cm = c(f,1);
+    km = c(f,2);
+  %%
+    % The BER is calculated with the corresponding formula.      
+    BER = cm*qfunc(sqrt(km*gamma));
+end
+%%
+    % *See also*
+    %
+    % <model_5.html Predictive theoretical model of PER #5>
+    %
+    % <model_8.html Predictive theoretical model of PER #8>
+##### SOURCE END #####
+--></body></html>
