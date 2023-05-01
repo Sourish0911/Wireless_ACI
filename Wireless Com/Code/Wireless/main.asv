@@ -10,7 +10,7 @@ G_r = 1;              % Receive antenna gain in dBi
 L = 1;                % Path loss exponent
 sigma = 1;            % Standard deviation of the shadow fading in dB
 
-N0_norm = -174;
+N0_norm = 174;
 bw = 10e6;
 N0 = N0_norm+10*log(bw);%Noise power in dBm
 N0_lin = 10^(N0/10);
@@ -47,7 +47,7 @@ title('Mask of Class C Wave Tx at 5.9 GHz')
 xlabel('Frequency in MHz')
 ylabel('Magnitude in dB')
 
-fc_list = [5860,5870,5880,5890,5900,5910,5920];
+fc_list = [586,5865,5875,5885,5895,5905,5915];
 rows = length(fc_list);
 col = len;
 
@@ -83,16 +83,16 @@ v0_xmobile = zeros(9,1);
 v3_xmobile = zeros(9,1);
 
 % Case 1
-PER_0_1 = zeros(9,1);
-BER_0_1 = zeros(9,1);
+
 for i = 1:9
     v0_xmobile(i) = v0_start_x +50*i;
     d1(i) = dist(v0_xmobile(i),v0_start_y,v1_start_x,v1_start_y);
-    
+
     v3_xmobile(i) = v3_start_x +50*i;
     d2(i) = dist(v3_xmobile(i),v3_start_y,v2_start_x,v2_start_y);
-    
-    [PER_0_1(i),BER_0_1(i)] = PaqER(fc_list(4),fc_list(3),d1(i),d2(i),N0_lin);
+
+
+
 end
 
 
